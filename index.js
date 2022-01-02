@@ -23,9 +23,7 @@ app.use("/auth", AuthRouter);
 // Function for creating connection to db and creating server
 const startServer = async () => {
     try {
-        await mongoose.connect(
-            "mongodb+srv://qwerty:12345@cluster0.c3mpw.mongodb.net/simple-auth-repeat?retryWrites=true&w=majority"
-        );
+        await mongoose.connect(process.env.DB_URL);
         app.listen(PORT, () => {
             console.log(`Сервер запущен! Порт=${PORT}`);
         });
